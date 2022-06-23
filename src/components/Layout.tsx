@@ -4,7 +4,7 @@ import { Navbar } from "./Navbar";
 
 export const Layout = (props: { children: React.ReactElement }) => {
   return (
-    <Grid container>
+    <Grid>
       <Navbar />
       {props.children}
     </Grid>
