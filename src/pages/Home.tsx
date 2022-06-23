@@ -1,8 +1,15 @@
 import { Grid, Typography, Box, TextField, Button, Paper } from "@mui/material";
 import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Dispatch } from "redux";
+import { ADD_TODO } from "../store/actionTypes";
 export const Home = () => {
   const TODO = [1, 2, 4, 6];
   const [newTodo, setNewTodo] = useState<string>("");
+  const Todos: TodoInterface[] = useSelector((store: TodoState) => store.todos);
+  const dispatch: Dispatch<any> = useDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(event.target.value);
@@ -11,6 +18,12 @@ export const Home = () => {
   const handleAddTodo = () => {
     setNewTodo("");
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch({ type: ADD_TODO, todo: { title: "new todo" } });
+    }, 0);
+  }, []);
 
   return (
     <Grid container alignItems={"center"} columnSpacing={2}>
