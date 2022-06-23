@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { ADD_TODO } from "../store/actionTypes";
 export const Home = () => {
-  const TODO = [1, 2, 4, 6];
   const [newTodo, setNewTodo] = useState<string>("");
   const Todos: TodoInterface[] = useSelector((store: TodoState) => store.todos);
   const dispatch: Dispatch<any> = useDispatch();
@@ -16,14 +15,9 @@ export const Home = () => {
   };
 
   const handleAddTodo = () => {
+    dispatch({ type: ADD_TODO, todo: { title: newTodo } });
     setNewTodo("");
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch({ type: ADD_TODO, todo: { title: "new todo" } });
-    }, 0);
-  }, []);
 
   return (
     <Grid container alignItems={"center"} columnSpacing={2}>
@@ -31,9 +25,9 @@ export const Home = () => {
         <Typography variant="h4">To Do List</Typography>
       </Grid>
       <Grid item sm={6} xs={12}>
-        {TODO.map((data) => (
+        {Todos.map((todo) => (
           <Paper elevation={1} sx={{ margin: "8px", padding: "8px" }}>
-            Todo
+            {todo.title}
           </Paper>
         ))}
       </Grid>
