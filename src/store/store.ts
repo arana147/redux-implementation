@@ -1,10 +1,12 @@
 import { createStore, Store } from "redux";
-import reducer from "../reducers/reducer";
+import reducers from "../reducers";
 
 // use combine reducer
 // todos action and reducer should be in one folder
-const store: Store<TodoState, TodoAction> & {
+
+
+const store: Store<{ todos: TodoState }, TodoAction> & {
   dispatch: DispatchType;
-} = createStore(reducer);
+} = createStore(reducers);
 
 export default store;

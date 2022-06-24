@@ -6,7 +6,9 @@ import { ADD_TODO } from "../actions/actionTypes";
 
 export const Home = () => {
   const [newTodo, setNewTodo] = useState<string>("");
-  const Todos: TodoInterface[] = useSelector((store: TodoState) => store.todos);
+  const todos: TodoInterface[] = useSelector(
+    (store: { todos: TodoState }) => store.todos.todos
+  );
   const dispatch: Dispatch<any> = useDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +27,7 @@ export const Home = () => {
         <Typography variant="h4">To Do List</Typography>
       </Grid>
       <Grid item sm={6} xs={12}>
-        {Todos.map((todo) => (
+        {todos.map((todo) => (
           <Paper elevation={1} sx={{ margin: "8px", padding: "8px" }}>
             {todo.title}
           </Paper>
