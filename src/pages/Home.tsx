@@ -1,10 +1,9 @@
-import { Grid, Typography, Box, TextField, Button, Paper } from "@mui/material";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
-import { ADD_TODO } from "../store/actionTypes";
+import { ADD_TODO } from "../actions/actionTypes";
+
 export const Home = () => {
   const [newTodo, setNewTodo] = useState<string>("");
   const Todos: TodoInterface[] = useSelector((store: TodoState) => store.todos);
@@ -14,6 +13,7 @@ export const Home = () => {
     setNewTodo(event.target.value);
   };
 
+  // create a selector file
   const handleAddTodo = () => {
     dispatch({ type: ADD_TODO, todo: { title: newTodo } });
     setNewTodo("");
