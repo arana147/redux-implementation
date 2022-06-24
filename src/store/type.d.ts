@@ -13,3 +13,7 @@ type TodoAction = {
 };
 
 type DispatchType = (args: TodoAction) => TodoAction;
+
+interface StoreInterface {
+  todos: TodoState;
+}

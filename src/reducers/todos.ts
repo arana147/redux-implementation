@@ -1,5 +1,3 @@
-
-
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState: TodoState = {
@@ -32,6 +30,7 @@ const todos = (
       const updatedTodos: TodoInterface[] = state.todos.filter(
         (todo) => todo.id !== action.todo.id
       );
+
       return {
         ...state,
         todos: updatedTodos,
