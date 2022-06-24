@@ -9,7 +9,7 @@ export const Products = () => {
       <h2>Products Page</h2>
       <Grid container alignItems={"center"} spacing={2}>
         {ProductList.map((data) => {
-          return <ProductItem />;
+          return <ProductItem key={data} />;
         })}
       </Grid>
     </Box>
